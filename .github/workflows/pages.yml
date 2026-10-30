@@ -25,8 +25,11 @@ jobs:
       #     node-version: 24
       #     cache: npm
 
-      - name: pnpm-setup
-        uses: pnpm/action-setup@v6
+      - uses: pnpm/setup@v1
+        with:
+          version: 12
+          runtime: node@24
+          cache: true
 
       - run: pnpm ci
 
