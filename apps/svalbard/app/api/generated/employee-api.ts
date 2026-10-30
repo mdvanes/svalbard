@@ -60,7 +60,7 @@ export const getGetEmployeesUrl = () => {
 
 
 
-  return `/api/fake/employees.json`
+  return `/svalbard/api/fake/employees.json`
 }
 
 /**
@@ -84,7 +84,7 @@ export const getEmployees = async ( options?: Parameters<typeof customFetch>[1])
 
 export const getGetEmployeesQueryKey = () => {
     return [
-    `/api/fake/employees.json`
+    `/svalbard/api/fake/employees.json`
     ] as const;
     }
 
