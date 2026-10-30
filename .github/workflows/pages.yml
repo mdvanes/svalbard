@@ -20,11 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # - uses: actions/setup-node@v7
-      #   with:
-      #     node-version: 24
-      #     cache: npm
-
       - uses: pnpm/setup@v1
         with:
           version: 12
@@ -33,17 +28,15 @@ jobs:
 
       - run: pnpm ci
 
-      # - run: pnpm test -w frontend
-
       - name: Build the static demo
         run: pnpm --filter svalbard build
 
       - name: Skip Jekyll
-        run: touch apps/build/client/.nojekyll
+        run: touch apps/svalbard/build/client/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
-          path: apps/build/client
+          path: apps/svalbard/build/client
 
   deploy:
     needs: build
@@ -53,4 +46,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
