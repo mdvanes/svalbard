@@ -1,17 +1,10 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
-
-import type { Route } from "./+types/root";
+import { Outlet } from "react-router";
 import "./app.css";
+import { StyleProvider } from "./components/ui/provider";
+import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
+import type { Route } from "./+types/root";
+import { isRouteErrorResponse } from "react-router";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,8 +20,9 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  // NOTE: needs suppressHydrationWarning because of https://stackoverflow.com/questions/77026759/using-next-themes-for-dark-mode-generates-hydration-failed-error
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,10 +38,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+const queryClient = new QueryClient();
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <StyleProvider>
+        <Outlet />
+      </StyleProvider>
     </QueryClientProvider>
   );
 }

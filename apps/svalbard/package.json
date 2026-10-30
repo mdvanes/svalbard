@@ -15,8 +15,10 @@
     "@svalbard/ui-components": "workspace:*",
     "@tanstack/react-query": "^5.105.0",
     "isbot": "^5.1.36",
+    "next-themes": "^0.4.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
     "react-router": "^8.5.1"
   },
   "devDependencies": {
@@ -25,7 +27,6 @@
     "@types/node": "^22",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
-    "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
     "vite": "^8.0.3"
   }
