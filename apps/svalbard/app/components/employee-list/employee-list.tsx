@@ -1,9 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@svalbard/ui-components";
-import { useGetEmployees } from "../../api/employee-api";
+import { useGetEmployees } from "../../api/generated/employee-api";
 
 export default function EmployeeList() {
-  const { data: response, isLoading, error } = useGetEmployees();
+  const {
+    data: response,
+    refetch,
+    isLoading,
+    isFetching,
+    error,
+  } = useGetEmployees();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -22,7 +28,9 @@ export default function EmployeeList() {
           </li>
         ))}
       </ul>
-      <Button onClick={() => alert("NYI")}>Get employees</Button>
+      <Button onClick={() => refetch()} disabled={isFetching}>
+        {isFetching ? "Refreshing..." : "Refresh employees"}
+      </Button>
     </>
   );
 }

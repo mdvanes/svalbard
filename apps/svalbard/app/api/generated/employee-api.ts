@@ -23,6 +23,11 @@ import type {
   Employee
 } from './models';
 
+import { customFetch } from '../fetcher';
+type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+
+
+
 const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKey: K } => {
   const result = { queryKey } as T & { queryKey: K };
   for (const key of Object.keys(query)) {
@@ -62,23 +67,16 @@ export const getGetEmployeesUrl = () => {
  * Returns a list of people.
  * @summary Get employees
  */
-export const getEmployees = async ( options?: RequestInit): Promise<getEmployeesResponse> => {
+export const getEmployees = async ( options?: Parameters<typeof customFetch>[1]): Promise<getEmployeesResponse> => {
 
-  const res = await fetch(getGetEmployeesUrl(),
+  return customFetch<getEmployeesResponse>(getGetEmployeesUrl(),
   {
     ...options,
     method: 'GET'
 
 
   }
-)
-
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-
-  const data: getEmployeesResponse['data'] = body ? JSON.parse(body) : {}
-  return { data, status: res.status, headers: res.headers } as getEmployeesResponse
-}
+);}
 
 
 
@@ -91,16 +89,16 @@ export const getGetEmployeesQueryKey = () => {
     }
 
 
-export const getGetEmployeesQueryOptions = <TData = Awaited<ReturnType<typeof getEmployees>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, fetch?: RequestInit}
+export const getGetEmployeesQueryOptions = <TData = Awaited<ReturnType<typeof getEmployees>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
 ) => {
 
-const {query: queryOptions, fetch: fetchOptions} = options ?? {};
+const {query: queryOptions, request: requestOptions} = options ?? {};
 
   const queryKey =  queryOptions?.queryKey ?? getGetEmployeesQueryKey();
 
 
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getEmployees>>> = ({ signal }) => getEmployees({ signal, ...fetchOptions });
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getEmployees>>> = ({ signal }) => getEmployees({ signal, ...requestOptions });
 
 
 
@@ -120,7 +118,7 @@ export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>
           TError,
           Awaited<ReturnType<typeof getEmployees>>
         > , 'initialData'
-      >, fetch?: RequestInit}
+      >, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
   ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>, TError = unknown>(
@@ -130,11 +128,11 @@ export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>
           TError,
           Awaited<ReturnType<typeof getEmployees>>
         > , 'initialData'
-      >, fetch?: RequestInit}
+      >, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, fetch?: RequestInit}
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
@@ -142,7 +140,7 @@ export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>
  */
 
 export function useGetEmployees<TData = Awaited<ReturnType<typeof getEmployees>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, fetch?: RequestInit}
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof getEmployees>>, TError, TData>>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient
  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
 
