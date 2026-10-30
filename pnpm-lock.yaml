@@ -7,6 +7,15 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vite:
+        specifier: ^8.0.3
+        version: 8.3.5(@types/node@22.20.5)(jiti@2.7.0)
+
+  apps/svalbard:
     dependencies:
       '@react-router/node':
         specifier: ^8.5.1
@@ -51,6 +60,8 @@ importers:
       vite:
         specifier: ^8.0.3
         version: 8.3.5(@types/node@22.20.5)(jiti@2.7.0)
+
+  packages/ui-components: {}
 
 packages:
 
