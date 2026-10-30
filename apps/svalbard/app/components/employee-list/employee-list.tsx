@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "@svalbard/ui-components";
 import { useGetEmployees } from "../../api/employee-api";
 
-// import { getPokemon } from "../api/pokemon";
-
 export default function EmployeeList() {
   const { data: response, isLoading, error } = useGetEmployees();
 

@@ -1,10 +1,17 @@
 {
   "name": "@svalbard/ui-components",
   "version": "0.0.0",
+  "private": true,
+  "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
   "peerDependencies": {
     "react": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.8",
+    "react": "^19.2.8",
+    "typescript": "^5.0.0"
   }
 }
