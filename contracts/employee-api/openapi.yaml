@@ -1,0 +1,49 @@
+openapi: 3.1.0
+
+info:
+  title: Employee API
+  version: 0.1.0
+
+paths:
+  /employees.json:
+    get:
+      operationId: getEmployees
+      summary: Get employees
+      description: Returns a list of people.
+      responses:
+        "200":
+          description: Employees retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Employee"
+
+components:
+  schemas:
+    Employee:
+      type: object
+      required:
+        - id
+        - lastName
+        - firstName
+        - employmentStartDate
+        - contractEndDate
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the employee.
+        lastName:
+          type: string
+        firstName:
+          type: string
+        employmentStartDate:
+          type: string
+          format: date
+        contractEndDate:
+          oneOf:
+            - type: string
+              format: date
+            - type: string
+              const: permanent

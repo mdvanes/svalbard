@@ -30,3 +30,6 @@ pnpm i
 
 pnpm --filter svalbard add "@svalbard/ui-components@workspace:*"
 
+Generate new APIs from OpenAPI schema:
+
+pnpm generate:api

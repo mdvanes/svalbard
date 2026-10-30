@@ -1,0 +1,72 @@
+[
+  {
+    "id": "EMP-001",
+    "lastName": "de Vries",
+    "firstName": "Sophie",
+    "employmentStartDate": "2018-03-12",
+    "contractEndDate": "permanent"
+  },
+  {
+    "id": "EMP-002",
+    "lastName": "Jansen",
+    "firstName": "Thomas",
+    "employmentStartDate": "2021-09-01",
+    "contractEndDate": "permanent"
+  },
+  {
+    "id": "EMP-003",
+    "lastName": "van Dijk",
+    "firstName": "Emma",
+    "employmentStartDate": "2024-02-15",
+    "contractEndDate": "2027-02-14"
+  },
+  {
+    "id": "EMP-004",
+    "lastName": "Bakker",
+    "firstName": "Lucas",
+    "employmentStartDate": "2020-06-08",
+    "contractEndDate": "permanent"
+  },
+  {
+    "id": "EMP-005",
+    "lastName": "Visser",
+    "firstName": "Noor",
+    "employmentStartDate": "2025-01-06",
+    "contractEndDate": "2026-12-31"
+  },
+  {
+    "id": "EMP-006",
+    "lastName": "Smit",
+    "firstName": "Daan",
+    "employmentStartDate": "2017-11-20",
+    "contractEndDate": "permanent"
+  },
+  {
+    "id": "EMP-007",
+    "lastName": "Meijer",
+    "firstName": "Julia",
+    "employmentStartDate": "2023-04-03",
+    "contractEndDate": "2027-04-02"
+  },
+  {
+    "id": "EMP-008",
+    "lastName": "Mulder",
+    "firstName": "Bram",
+    "employmentStartDate": "2019-08-19",
+    "contractEndDate": "permanent"
+  },
+  {
+    "id": "EMP-009",
+    "lastName": "de Boer",
+    "firstName": "Lotte",
+    "employmentStartDate": "2026-02-01",
+    "contractEndDate": "2027-01-31"
+  },
+  {
+    "id": "EMP-010",
+    "lastName": "Vos",
+    "firstName": "Milan",
+    "employmentStartDate": "2022-10-10",
+    "contractEndDate": "permanent"
+  }
+]
