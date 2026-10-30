@@ -21,3 +21,12 @@ pnpm --filter svalbard add -D vitest
 run dev server:
 
 pnpm --filter svalbard dev
+
+Adding a library
+
+Create the files under libs/my-lib/, e.g. package.json with a namespace in the name.
+
+pnpm i
+
+pnpm --filter svalbard add "@svalbard/ui-components@workspace:*"
+

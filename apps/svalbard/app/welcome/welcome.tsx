@@ -1,5 +1,6 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
+import { Button } from "@svalbard/ui-components";
 
 export function Welcome() {
   return (
@@ -40,6 +41,9 @@ export function Welcome() {
               ))}
             </ul>
           </nav>
+          <Button onClick={() => console.log("click")}>
+            Hello from the UI library
+          </Button>
         </div>
       </div>
     </main>

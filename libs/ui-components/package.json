@@ -1,13 +1,10 @@
 {
-  "name": "ui-components",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "@svalbard/ui-components",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module"
+  "peerDependencies": {
+    "react": "^19.2.8"
+  }
 }
