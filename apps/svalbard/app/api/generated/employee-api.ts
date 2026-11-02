@@ -60,7 +60,7 @@ export const getGetEmployeesUrl = () => {
 
 
 
-  return `/svalbard/api/fake/employees.json`
+  return `${import.meta.env.VITE_API_BASE_URL}/employees.json`
 }
 
 /**
@@ -84,7 +84,7 @@ export const getEmployees = async ( options?: Parameters<typeof customFetch>[1])
 
 export const getGetEmployeesQueryKey = () => {
     return [
-    `/svalbard/api/fake/employees.json`
+    `${import.meta.env.VITE_API_BASE_URL}/employees.json`
     ] as const;
     }
 

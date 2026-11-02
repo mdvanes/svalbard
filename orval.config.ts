@@ -11,7 +11,9 @@ export default defineConfig({
       client: "react-query",
       httpClient: "fetch",
       clean: true,
-      baseUrl: "/api/fake",
+      baseUrl: {
+        runtime: 'import.meta.env.VITE_API_BASE_URL',
+      },
 
       override: {
         mutator: {
